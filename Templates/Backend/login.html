@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block body %}
+    {% if invalid %}
+        This user doesn't exist
+    {% endif %}
+    <form action="{% url 'login' %}" method="POST">
+        {% csrf_token %}
+        {{ user_form.username }}
+        {{ user_form.password }}
+        <button type="submit">Sign in</button>
+    </form>
+    <a href="{% url 'register' %}">Not registered already?</a>
+{% endblock %}
