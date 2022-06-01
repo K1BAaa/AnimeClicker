@@ -1,17 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
+{% load static %}
+<html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <script type="text/javascript" src="{% static "index.js" %}"></script>
+    <title>Лучший кликер на планете</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <script type="text/javascript" src="{% static 'js/index.js' %}"></script>
+
+    <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      font-size: 18px;
+    }
+  </style>
 </head>
-<body>
-    <div>
-        <ul>
-            <li><a href={% url 'index' %}>Home</a></li>
-            <li><a href={% url 'logout' %}>Logout</a></li>
-        </ul>
-    </div>
     {% block body %}
     {% endblock %}
-</body>
 </html>
