@@ -1,4 +1,7 @@
 {% extends "base.html" %}
+{% load static %}
 {% block body %}
     WELCOME TO OUR BEAUTIFUL CLICKER
+    coins = {{ core.coins }}
+    click power = {{ core.click_power }}
 {% endblock %}
