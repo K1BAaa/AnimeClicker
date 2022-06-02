@@ -8,7 +8,7 @@ boosts_list = views.BoostViewSet.as_view({
 
 boost_details = views.BoostViewSet.as_view({
     'get': 'retrieve', # получить данные об одной заметке
-    'put': 'update', # обновить все поля заметки
+    'put': 'partial_update', # обновить все поля заметки
     'patch': 'partial_update', # обновить несколько полей заметки
     'delete': 'destroy' # ремувнуть, уничтожить, удалить, разрушить, зарезать заметку
 })
