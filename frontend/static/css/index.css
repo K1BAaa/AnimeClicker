@@ -1,11 +1,16 @@
-.boost_1 {
+img.boost_1 {
     background-color: lightcoral;
-    border-radius: 1rem;
-    border-color: indianred;
+    border-radius: 0.5rem;
+    border: solid white;
 }
 
-.boost_0 {
+.boosts.container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+img.boost_0 {
     background-color: mediumslateblue;
-    border-radius: 1rem;
-    border-color: hotpink;
+    border-radius: 0.5rem;
+    border: solid white;
 }

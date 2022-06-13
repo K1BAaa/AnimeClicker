@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load static %}
 {% block body %}
 <body>
     <main class="app" align="center">
@@ -9,7 +10,7 @@
 
         <div class="container">
             <div id='coins'>{{core.coins}}</div>
-            <button onclick="call_click()">Click me</button>
+            <img src="{% static 'img/main.png' %}" alt="click me" onclick="call_click()" id="image">
             <p>
                 Click power: <span id="click_power">{{ core.click_power }}</span>
             </p>
@@ -18,17 +19,18 @@
             </p>
         </div>
 
-        <aside class="boosts" id="boosts">
-            <h3>Boosts</h3>
-            <div class="boosts-holder" id="boosts-holder">
+        <aside class="boosts container" id="boosts" style="justify-content: space-evenly;">
                 {% for boost in boosts %}
-                    <button class="boost_{{ boost.type }}" id="boost_{{boost.id}}" onclick="buy_boost({{boost.id}})">
-                        <p>lvl: <span id="boost_level">{{boost.level}}</span></p>
-                        <p>+<span id="boost_power">{{boost.power}}</span></p>
-                        <p><span id="boost_price">{{boost.price}}</span></p>
-                    </button>
+                    <div class="boost_{{ boost.type }} " id="boost_{{boost.id}}" style="padding: 5px; display: inline-flex">
+                        <img src="{% static 'img/boost.png' %}" class="boost_{{ boost.type }}" id="boost_{{boost.id}}" style="width: 90px;
+height: 90px;" onclick="buy_boost({{boost.id}})" alt="boost image">
+                        <div style="display: flex; flex-direction: column; align-items: center; justify-content: space-between;">
+                            <p style="margin: 0; ">lvl: <span id="boost_level">{{boost.level}}</span></p>
+                            <p style="margin: 0; ">+<span id="boost_power">{{boost.power}}</span></p>
+                            <p style="margin: 0; "><span id="boost_price">{{boost.price}}</span></p>
+                        </div>
+                    </div>
                 {% endfor %}
-            </div>
         </aside>
     </main>
 </body>

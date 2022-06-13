@@ -1,7 +1,3 @@
-/**
-* Класс, в котором хранятся данные игры пользователя и основные методы взаимодействия с этими данными.
-* Пусть вас не смущает слово function в начале, в JS так можно определять классы.
-*/
 function GameSession() {
     this.coins = 0
     this.click_power = 1
@@ -48,8 +44,8 @@ let Game = new GameSession() // Экземпляр класса GameSession.
 
 /** Функция обработки клика пользователя на какаши. */
 function call_click() {
-    /*const kakashiNode = document.getElementById('kakashi')
-    click_animation(kakashiNode, 50)*/
+    const image = document.getElementById('image')
+    click_animation(image, 50)
     Game.add_coins(Game.click_power)
 }
 
@@ -66,23 +62,29 @@ function render() {
 /** Функция для обновления буста на фронтике. */
 function update_boost(boost) {
     const boost_node = document.getElementById(`boost_${boost.id}`)
-    boost_node.querySelector('#boost_level').innerText = boost.level
-    boost_node.querySelector('#boost_power').innerText = boost.power
-    boost_node.querySelector('#boost_price').innerText = boost.price
+    //click_animation(boost_node, 50)
+    boost_node.querySelector('#boost_level').textContent = boost.level
+    boost_node.querySelector('#boost_power').textContent = boost.power
+    boost_node.querySelector('#boost_price').textContent = boost.price
 }
 
 /** Функция для добавления буста на фронтике. */
 function add_boost(parent, boost) {
-    const button = document.createElement('button')
-    button.setAttribute('class', `boost_${boost.type}`)
-    button.setAttribute('id', `boost_${boost.id}`)
-    button.setAttribute('onclick', `buy_boost(${boost.id})`)
-    button.innerHTML = ` 
-        <p>lvl: <span id="boost_level">${boost.level}</span></p>
-        <p>+<span id="boost_power">${boost.power}</span></p> 
-        <p><span id="boost_price">${boost.price}</span></p> 
-    `
-    parent.appendChild(button)
+    const boost_el = document.createElement('div')
+    boost_el.setAttribute('class', `boost_${boost.type}`)
+    boost_el.setAttribute('id', `boost_${boost.id}`)
+    boost_el.style.padding = "5px"
+    boost_el.style.display = "inline-flex"
+    //button.setAttribute('onclick', `buy_boost(${boost.id})`)
+    boost_el.innerHTML = ` 
+        <img src="/frontend/static/img/boost.png" class="boost_${boost.type}" id="boost_${boost.id}" style="width: 90px;
+height: 90px;" onclick="buy_boost(${boost.id})" alt="boost image">
+        <div >
+            <p>lvl: <span id="boost_level">${boost.level}</span></p>
+            <p>+<span id="boost_power">${boost.power}</span></p> 
+            <p><span id="boost_price">${boost.price}</span></p>
+        </div>`
+    parent.appendChild(boost_el)
 }
 
 /** Функция для анимации элемента, по которому происходит клик. */
